@@ -1,4 +1,4 @@
-{% set version = "4.2.5.2" %}
+{% set version = "4.2.5" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -35,6 +35,7 @@ requirements:
     - {{ posix }}sed               # [win]
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
+    - gfortran
   host:
     - r-base
     - r-rcpp
