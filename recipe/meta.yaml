@@ -35,7 +35,6 @@ requirements:
     - {{ posix }}sed               # [win]
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
-    - gfortran
   host:
     - r-base
     - r-rcpp
