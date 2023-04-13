@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/openxlsx_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/openxlsx/openxlsx_{{ version }}.tar.gz
-  sha256: ee7089e7e5832ef22ee0d0eebf7cca5096ce23afb2bcdb58700be62526fc9b67
+  sha256: 65d06d2819b656ac30fc78437ee712a83fb5a7ab750f56268e5c9e578c582519
 
 build:
   merge_build_host: true  # [win]
