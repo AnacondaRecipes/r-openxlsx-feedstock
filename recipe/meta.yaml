@@ -54,6 +54,7 @@ requirements:
     - r-stringi
     - r-zip
     - libcxx                       # [not win]
+    - libstdcxx-ng                 # [not win]
     
 
 test:
