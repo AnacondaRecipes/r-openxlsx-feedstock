@@ -15,9 +15,16 @@ source:
 build:
   merge_build_host: true  # [win]
   number: 0
+  # Only building r packages for win64, linux64, osx64
+  skip: True # [aarch64 or s390x or ppc64le or arm64]
+
   rpaths:
     - lib/R/lib/
     - lib/
+
+  # weird error on windows
+  missing_dso_whitelist:
+    - $RPATH/R.dll  # [win]
 
 requirements:
   build:
@@ -27,7 +34,7 @@ requirements:
     - r-rlang                    # [build_platform != target_platform]
     - r-rcpp                     # [build_platform != target_platform]
     - {{ compiler('c') }}              # [not win]
-    - {{ compiler('m2w64_c') }}        # [win]
+    - {{native}}toolchain        # [win]
     - {{ compiler('cxx') }}            # [not win]
     - {{ compiler('m2w64_cxx') }}      # [win]
     - {{ posix }}filesystem        # [win]
@@ -36,13 +43,13 @@ requirements:
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
   host:
-    - r-base
+    - r-base {{ r_version }}
     - r-rcpp
     - r-rlang >=0.1.2
     - r-stringi
     - r-zip
   run:
-    - r-base
+    - r-base {{ r_version }}
     - {{ native }}gcc-libs         # [win]
     - r-rcpp
     - r-rlang >=0.1.2
@@ -66,6 +73,22 @@ about:
 extra:
   recipe-maintainers:
     - conda-forge/r
+  skip-lints:
+    # These are needed because of bug: https://github.com/anaconda-distribution/anaconda-linter/issues/197
+    - http_url
+    - invalid_url
+
+    - host_section_needs_exact_pinnings
+    - missing_dev_url
+    - missing_description
+    - missing_documentation
+
+  anaconda-services:
+    ref:  https://anaconda.zendesk.com/agent/tickets/35116
+    reason: "needed for r-devtools"
+    recipe-maintainers:
+      - bkreider
+
 
 # Type: Package
 # Package: openxlsx
