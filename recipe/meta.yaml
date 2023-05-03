@@ -53,6 +53,8 @@ requirements:
     - r-rlang >=0.1.2
     - r-stringi
     - r-zip
+    - libcxx                       # [not win]
+    
 
 test:
   commands:
