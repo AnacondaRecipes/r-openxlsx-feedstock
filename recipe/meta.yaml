@@ -35,7 +35,6 @@ requirements:
     - r-rcpp                     # [build_platform != target_platform]
     - {{ compiler('c') }}              # [not win]
     - {{native}}toolchain        # [win]
-    - {{ compiler('cxx') }}            # [not win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}make
     - {{ posix }}sed               # [win]
